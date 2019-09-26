@@ -21,13 +21,16 @@ provider:
   name: azure
   region: West US
   runtime: nodejs10.x
+  keyVault: 
+    name: myho-serverless-demo-kv
+    resourceGroup: myho-serverless-keyvault-demo-rg
   # prefix: "sample"  # prefix of generated resource name
   # subscriptionId: A356AC8C-E310-44F4-BF85-C7F29044AF99
   # stage: dev
   # type: premium  # premium azure functions
 
   environment: # these will be created as application settings
-    VARIABLE_FOO: "foo"
+    SUPER_SECRET: "@Microsoft.KeyVault(SecretUri=https://myho-serverless-demo-kv.vault.azure.net/secrets/MySuperSecretName/88df087331004326994047248b0b6b67)"
 
   # you can define apim configuration here
   apim:
@@ -90,6 +93,15 @@ functions:
           methods:
             - GET
           authLevel: anonymous
+  secrets:
+    handler: src/handlers/secrets.printSecrets
+    events:
+      - http: true
+        x-azure-settings:
+          methods:
+            - GET
+          authLevel: anonymous
+
   # The following are a few examples of other events you can configure:
   # storageBlob:
   #   handler: src/handlers/storageBlob.printMessage
