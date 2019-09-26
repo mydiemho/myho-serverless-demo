@@ -27,7 +27,7 @@ provider:
   # type: premium  # premium azure functions
 
   environment: # these will be created as application settings
-    VARIABLE_FOO: "foo"
+    SUPER_SECRET: "@Microsoft.KeyVault(SecretUri=https://myho-serverless-demo-kv.vault.azure.net/secrets/MySuperSecretName/adfab37601be4db99b60d798c56ac255)"
 
   # you can define apim configuration here
   apim:
@@ -90,6 +90,15 @@ functions:
           methods:
             - GET
           authLevel: anonymous
+  secrets:
+    handler: src/handlers/secrets.printSecrets
+    events:
+      - http: true
+        x-azure-settings:
+          methods:
+            - GET
+          authLevel: anonymous
+
   # The following are a few examples of other events you can configure:
   # storageBlob:
   #   handler: src/handlers/storageBlob.printMessage
