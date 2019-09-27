@@ -6,8 +6,8 @@
 set -e
 
 PREFIX=$(whoami)
-RESOURCE_GROUP="${PREFIX}-serverless-keyvault-demo-rg"
-KEYVAULT="${PREFIX}-serverless-demo-kv"
+RESOURCE_GROUP="${PREFIX}-serverless-keyvault-test-rg"
+KEYVAULT="${PREFIX}-serverless-test-kv"
 REGION="westus"
 
 SECRET_NAME=${1:-"MySuperSecretName"}

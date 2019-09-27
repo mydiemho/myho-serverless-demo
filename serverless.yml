@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: myho-serverless-demo
+service: myho-serverless-test
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -21,16 +21,16 @@ provider:
   name: azure
   region: West US
   runtime: nodejs10.x
-  keyVault: 
-    name: myho-serverless-demo-kv
-    resourceGroup: myho-serverless-keyvault-demo-rg
+  keyVault:
+    name: myho-serverless-test-kv
+    resourceGroup: myho-serverless-keyvault-test-rg
   # prefix: "sample"  # prefix of generated resource name
   # subscriptionId: A356AC8C-E310-44F4-BF85-C7F29044AF99
   # stage: dev
   # type: premium  # premium azure functions
 
   environment: # these will be created as application settings
-    SUPER_SECRET: "@Microsoft.KeyVault(SecretUri=https://myho-serverless-demo-kv.vault.azure.net/secrets/MySuperSecretName/88df087331004326994047248b0b6b67)"
+    SUPER_SECRET: "@Microsoft.KeyVault(SecretUri=https://myho-serverless-test-kv.vault.azure.net/secrets/MySuperSecretName/5ebad1a426a347de9d6200219369dcc4)"
 
   # you can define apim configuration here
   apim:
@@ -101,7 +101,6 @@ functions:
           methods:
             - GET
           authLevel: anonymous
-
   # The following are a few examples of other events you can configure:
   # storageBlob:
   #   handler: src/handlers/storageBlob.printMessage

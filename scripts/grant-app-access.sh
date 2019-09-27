@@ -8,8 +8,8 @@ set -e
 
 
 PREFIX=$(whoami)
-RESOURCE_GROUP="${PREFIX}-serverless-keyvault-demo-rg"
-KEYVAULT="${PREFIX}-serverless-demo-kv"
+RESOURCE_GROUP="${PREFIX}-serverless-keyvault-test-rg"
+KEYVAULT="${PREFIX}-serverless-test-kv"
 REGION="westus"
 
 ### NOTE: The function app and all dependent infrastructures have to be created first
